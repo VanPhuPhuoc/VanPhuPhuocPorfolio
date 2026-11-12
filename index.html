@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Văn Phú Phước Portfolio</title>
+<meta name="description" content="Văn Phú Phước: học viên cao học Kỹ thuật Y sinh tại Trường ĐH Quốc tế, ĐHQG-HCM, nghiên cứu vật liệu sinh học; người sáng lập V2P Education, trung tâm luyện thi cấp 2 và cấp 3.">
+<meta property="og:title" content="Văn Phú Phước">
+<meta property="og:description" content="Nghiên cứu vật liệu sinh học · Sáng lập V2P Education">
+<meta property="og:image" content="img/portrait.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234636A8'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: mực tím học trò + tơ vàng. Một cột đọc rộng 1080px, nhãn mục ở lề trái,
+   nội dung ở lề phải; điểm nhấn duy nhất là tấm "mạng sợi nano" ở đầu trang Giới thiệu. */
+:root{
+  --bg:#F5F4F9;
+  --surface:#FFFFFF;
+  --ink:#1D1938;
+  --muted:#625E7A;
+  --line:#DAD7E6;
+  --violet:#4636A8;      /* mực tím */
+  --violet-soft:#ECE9FA;
+  --silk:#A9781A;        /* tơ vàng, dùng cho chữ */
+  --silk-soft:#FBF3DF;
+  --panel:#1B1640;       /* nền tấm sợi */
+  --fiber:#E4B44C;
+  --fiber-2:#9C8CFF;
+  --display:"Newsreader","Noto Serif",Georgia,"Times New Roman",serif;
+  --body:"Be Vietnam Pro","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121022; --surface:#1A1730; --ink:#ECEAF7; --muted:#A5A1BF; --line:#2F2B4B;
+    --violet:#AEA2FF; --violet-soft:#252046; --silk:#E3B655; --silk-soft:#2B2416;
+    --panel:#0C0A1C; --fiber:#E4B44C; --fiber-2:#8E7FF0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121022; --surface:#1A1730; --ink:#ECEAF7; --muted:#A5A1BF; --line:#2F2B4B;
+  --violet:#AEA2FF; --violet-soft:#252046; --silk:#E3B655; --silk-soft:#2B2416;
+  --panel:#0C0A1C; --fiber:#E4B44C; --fiber-2:#8E7FF0;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65}
+a{color:var(--violet);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Thanh điều hướng */
+header.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 24px;padding-top:14px;padding-bottom:14px}
+.mark{font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.mark span{color:inherit}
+nav ul{display:flex;flex-wrap:wrap;gap:4px}
+nav a{display:block;padding:7px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500;transition:background .15s,color .15s}
+nav a:hover{color:var(--ink);background:var(--violet-soft)}
+nav a[aria-current="page"]{color:var(--surface);background:var(--violet)}
+
+/* Khung trang */
+main{padding:48px 0 72px}
+.view[hidden]{display:none}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--silk)}
+.pagehead{display:grid;gap:14px;max-width:760px;margin-bottom:44px}
+.pagehead h1{font-size:clamp(34px,5.2vw,52px);letter-spacing:-.015em}
+.pagehead p{font-size:18px;color:var(--muted)}
+section.block{display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px 40px;padding:36px 0;border-top:1px solid var(--line)}
+section.block>h2{font-size:24px}
+section.block>h2 small{display:block;font-family:var(--body);font-size:13px;font-weight:500;color:var(--muted);margin-top:8px;line-height:1.5}
+.stack{display:grid;gap:18px;min-width:0}
+.prose{max-width:66ch}
+.prose p+p{margin-top:12px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:stretch;margin-bottom:48px}
+.hero-text{display:grid;gap:20px;align-content:center}
+.hero h1{font-size:clamp(44px,7.4vw,84px);letter-spacing:-.025em;line-height:1}
+.hero h1 span{color:inherit}
+.hero .lead{font-size:19px;max-width:46ch}
+.hero .lead b{font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:10px 18px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--violet);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.solid{background:var(--violet);color:var(--surface)}
+.btn.ghost{color:var(--violet)}
+.fiber{position:relative;min-height:340px;border-radius:14px;overflow:hidden;background:var(--panel)}
+.fiber canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fiber figcaption{position:absolute;left:16px;right:16px;bottom:14px;font-size:12.5px;line-height:1.45;color:#D9D4F2}
+.fiber figcaption b{color:var(--fiber);font-weight:600}
+figure{margin:0}
+
+/* Dải dữ kiện */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-bottom:12px}
+.facts li{padding:22px 24px;display:grid;gap:6px;align-content:start}
+.facts li+li{border-left:1px solid var(--line)}
+.facts .k{font-family:var(--display);font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+.facts .v{font-size:14.5px;color:var(--muted)}
+
+/* Dòng thời gian */
+.timeline{display:grid}
+.timeline li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:20px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.timeline li:last-child{border-bottom:0}
+.timeline .y{font-family:var(--display);font-size:22px;color:var(--violet);font-variant-numeric:tabular-nums}
+.timeline h3{font-family:var(--body);font-size:16px;font-weight:600;line-height:1.4}
+.timeline p{color:var(--muted);font-size:15px}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;margin-right:6px;vertical-align:2px}
+.tag.sci{background:var(--violet-soft);color:var(--violet)}
+.tag.edu{background:var(--silk-soft);color:var(--silk)}
+
+/* Thẻ, danh sách */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;display:grid;gap:10px;align-content:start}
+.card h3{font-size:21px}
+.card p,.card li{font-size:15px;color:var(--muted)}
+.card .meta{font-size:13px;font-weight:600;color:var(--silk);letter-spacing:.03em}
+a.card{text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+a.card:hover{border-color:var(--violet);transform:translateY(-2px)}
+a.card .go{color:var(--violet);font-weight:600;font-size:14.5px}
+.dots li{position:relative;padding-left:18px}
+.dots li+li{margin-top:6px}
+.dots li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--silk)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font-size:14px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.rows{border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.rows li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:baseline;padding:16px 22px}
+.rows li+li{border-top:1px solid var(--line)}
+.rows h3{font-family:var(--body);font-size:16px;font-weight:600;line-height:1.45}
+.rows p{font-size:14.5px;color:var(--muted);grid-column:1}
+.rows .side{font-size:14px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rows a.side{color:var(--violet);font-weight:600}
+
+/* Ô chờ bổ sung */
+.todo{border:1.5px dashed var(--silk);border-radius:14px;padding:16px 20px;background:var(--silk-soft);font-size:14.5px;color:var(--ink);display:grid;gap:6px}
+.todo b:first-child{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--silk)}
+.note{font-size:13.5px;color:var(--muted)}
+.quote{font-family:var(--display);font-style:italic;font-size:24px;line-height:1.35;max-width:30ch}
+
+
+/* Ảnh, trích dẫn, khóa học */
+.media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.media figure{display:grid;gap:8px;align-content:start}
+.media img{width:100%;height:280px;object-fit:cover;border-radius:14px;border:1px solid var(--line);display:block;background:var(--violet-soft)}
+.media figcaption{font-size:13.5px;color:var(--muted)}
+.quotes{columns:2;column-gap:16px}
+.q{margin:0 0 16px;break-inside:avoid;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--silk);border-radius:14px;padding:18px 22px;display:grid;gap:10px}
+.q p{font-size:15.5px;line-height:1.65}
+.q cite{font-style:normal;font-size:13.5px;color:var(--muted);padding-top:10px;border-top:1px solid var(--line)}
+.q cite b{color:var(--ink);font-weight:600}
+.chips li b{color:var(--violet);font-weight:600;margin-left:5px;font-variant-numeric:tabular-nums}
+.card .stat{font-size:15px;color:var(--ink)}
+.card .stat b{font-weight:600}
+.pub{font-size:15.5px;line-height:1.6}
+.pub i{font-family:var(--display);font-size:17px}
+@media (max-width:820px){.media{grid-template-columns:1fr}.quotes{columns:1}}
+
+.fiber.photo{display:grid;gap:10px;padding:16px;align-content:start}
+.fiber.photo img{position:relative;display:block;width:100%;height:300px;object-fit:cover;object-position:60% 20%;border-radius:8px}
+.fiber.photo figcaption{position:relative;left:auto;right:auto;bottom:auto}
+.roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;border-top:1px solid var(--line)}
+.roster li{display:grid;gap:1px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.roster li b{font-weight:600;color:var(--ink)}
+.roster li span{font-size:13.5px;color:var(--muted)}
+.sub{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--silk);margin-top:8px}
+.card h3.sub{font-family:var(--body);font-size:13px;margin-top:6px}
+.certs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.certs figure{display:grid;gap:8px;align-content:start}
+.zoom{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);cursor:zoom-in;transition:border-color .15s,transform .15s}
+.zoom:hover{border-color:var(--violet);transform:translateY(-2px)}
+.zoom img{display:block;width:100%;height:230px;object-fit:cover;object-position:top}
+.certs figcaption{font-size:13.5px;color:var(--muted)}
+.certs figcaption b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
+#lb{position:fixed;inset:0;z-index:20;background:rgba(12,10,28,.88);display:grid;place-items:center;padding:20px;cursor:zoom-out}
+#lb[hidden]{display:none}
+#lb img{max-width:100%;max-height:calc(100vh - 80px);border-radius:8px;background:#fff}
+#lb button{position:absolute;top:14px;right:16px;font:600 14px var(--body);color:#fff;background:transparent;border:1.5px solid #fff;border-radius:999px;padding:7px 14px;cursor:pointer}
+@media (max-width:820px){.certs{grid-template-columns:repeat(2,minmax(0,1fr))}.roster{grid-template-columns:1fr}}
+
+.portrait img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%;border-radius:14px}
+.media.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.media.three img{height:210px}
+.zoom.photo img{object-position:center}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pair figure{display:grid;gap:8px;align-content:start}
+.pair figcaption{font-size:13.5px;color:var(--muted)}
+.cards.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.three .card h3{font-size:19px}
+@media (max-width:820px){.media.three,.cards.three,.pair{grid-template-columns:1fr}.portrait img{max-width:360px}}
+
+/* Chân trang */
+footer{border-top:1px solid var(--line);padding:36px 0 56px}
+footer .wrap{display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px 40px}
+footer h2{font-size:24px}
+.contact{display:flex;flex-wrap:wrap;gap:12px 40px}
+.contact div{display:grid;gap:2px;font-size:15px}
+.contact span{font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.small{grid-column:2;font-size:13px;color:var(--muted)}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:28px}
+  .fiber{min-height:240px}
+  section.block,footer .wrap{grid-template-columns:1fr}
+  .small{grid-column:1}
+  .facts{grid-template-columns:1fr}
+  .facts li+li{border-left:0;border-top:1px solid var(--line)}
+  .cards{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .wrap{padding:0 16px}
+  main{padding-top:32px}
+  .timeline li{grid-template-columns:56px minmax(0,1fr);gap:12px}
+  .rows li{grid-template-columns:1fr}
+  .rows .side{white-space:normal}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#gioi-thieu">Văn Phú <span>Phước</span></a>
+    <nav aria-label="Các trang">
+      <ul>
+        <li><a href="#gioi-thieu" data-nav="gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#hoc-thuat" data-nav="hoc-thuat">Học thuật</a></li>
+        <li><a href="#giang-day" data-nav="giang-day">Giảng dạy &amp; V2P</a></li>
+        <li><a href="#chung-chi" data-nav="chung-chi">Chứng chỉ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ 1. GIỚI THIỆU ============ -->
+<div class="view" data-view="gioi-thieu">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Học viên cao học Kỹ thuật Y sinh · Giáo viên Toán</p>
+      <h1>Văn Phú <span>Phước</span></h1>
+      <p class="lead">Mình nghiên cứu <b>vật liệu sinh học</b> tại Trường Đại học Quốc tế, ĐHQG-HCM và là người sáng lập <b>V2P Education</b>, trung tâm luyện thi cấp 2 và cấp 3.</p>
+      <div class="cta">
+        <a class="btn solid" href="#hoc-thuat">Xem hồ sơ học thuật</a>
+        <a class="btn ghost" href="#giang-day">Xem hành trình giảng dạy</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="img/portrait.jpg" alt="Ảnh chân dung Văn Phú Phước, mặc vest đen và sơ mi trắng">
+    </figure>
+  </div>
+
+  <ul class="facts">
+    <li><span class="k">Bằng Giỏi</span><span class="v">Cử nhân Công nghệ Sinh học, Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM. GPA 3.49/4.0.</span></li>
+    <li><span class="k">Học bổng toàn phần</span><span class="v">Chương trình Thạc sĩ Kỹ thuật Y sinh, Trường ĐH Quốc tế, ĐHQG-HCM.</span></li>
+    <li><span class="k">Founder V2P</span><span class="v">Sáng lập V2P Education, hiện có 10 giáo viên. Đi dạy từ năm 2020.</span></li>
+  </ul>
+
+  <section class="block">
+    <h2>Về mình</h2>
+    <div class="prose">
+      <p>Mình sống và làm việc tại TP. Hồ Chí Minh. Mình tốt nghiệp loại Giỏi ngành Công nghệ Sinh học, Trường Đại học Khoa học Tự nhiên năm 2025, rồi nhận học bổng toàn phần bậc Thạc sĩ ngành Kỹ thuật Y sinh tại Trường Đại học Quốc tế. Cả hai trường đều thuộc Đại học Quốc gia TP.HCM.</p>
+      <p>Công việc của mình có hai mảng chạy song song. Ở phòng thí nghiệm, mình làm về nuôi cấy tế bào, y sinh học tái tạo và vật liệu từ tơ tằm. Trên lớp, mình dạy Toán và luyện thi vào lớp 10, thi tốt nghiệp THPT và Đánh giá năng lực cho học sinh.</p>
+      <p>Hai việc này bổ trợ cho nhau: làm nghiên cứu rèn cho mình cách lập luận chặt chẽ, còn đi dạy rèn cho mình cách giải thích một vấn đề khó sao cho dễ hiểu.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Hình ảnh</h2>
+    <div class="stack">
+      <div class="media three">
+        <figure><img src="img/htv9.jpg" alt="Văn Phú Phước mặc áo blouse trắng, trả lời phỏng vấn trong phòng thí nghiệm, trên sóng HTV9" style="object-position:70% 30%"><figcaption>Trả lời phỏng vấn trong bản tin Tin buổi sáng, HTV9.</figcaption></figure>
+        <figure><img src="img/htv9-lab.jpg" alt="Văn Phú Phước thao tác thí nghiệm bên kệ hóa chất, hình từ bản tin HTV9" style="object-position:60% 40%"><figcaption>Làm việc tại phòng thí nghiệm, hình từ bản tin HTV9.</figcaption></figure>
+        <figure><img src="img/hoi-nghi.jpg" alt="Văn Phú Phước đứng báo cáo trên bục tại hội nghị BME11" style="object-position:70% 55%"><figcaption>Báo cáo tại Hội nghị BME11, Cam Ranh, Nha Trang, tháng 7/2026. Mình là thành viên ban tổ chức và báo cáo viên.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Hành trình<small>Tím: học thuật. Vàng: giảng dạy.</small></h2>
+    <ul class="timeline">
+      <li><span class="y">2020</span><div><h3><span class="tag sci">Học thuật</span>Giải Ba Học sinh giỏi cấp Thành phố, môn Sinh học 12</h3><p>Năm học 2019–2020, khi đang học THPT Võ Trường Toản.</p></div></li>
+      <li><span class="y">2020</span><div><h3><span class="tag edu">Giảng dạy</span>Bắt đầu đi dạy tại trung tâm Thuận An, Quận 12</h3><p>Dạy Toán và Sinh học lớp 12, hỗ trợ tuyển sinh và ôn thi tốt nghiệp.</p></div></li>
+      <li><span class="y">2021</span><div><h3><span class="tag edu">Giảng dạy</span>Gia sư độc lập</h3><p>Tập trung luyện thi THPT và thi tốt nghiệp.</p></div></li>
+      <li><span class="y">2023</span><div><h3><span class="tag sci">Học thuật</span>Kỹ thuật viên Phòng thí nghiệm Y sinh học tái tạo</h3><p>Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM. Đề tài về cơ chế xơ gan.</p></div></li>
+      <li><span class="y">2025</span><div><h3><span class="tag sci">Học thuật</span>Tốt nghiệp cử nhân loại Giỏi</h3><p>Bảo vệ khóa luận, báo cáo theo lời mời tại phòng thí nghiệm (tháng 2) và báo cáo tại Hội nghị Khoa học trẻ lần II (tháng 6).</p></div></li>
+      <li><span class="y">2025</span><div><h3><span class="tag edu">Giảng dạy</span>Sáng lập V2P Education</h3><p>Học sinh khóa 2k7 đậu Bách khoa, Kinh tế – Luật, Quốc tế, Khoa học Xã hội và Nhân văn, Sư phạm TP.HCM, Luật TP.HCM và nhiều trường khác.</p></div></li>
+      <li><span class="y">2026</span><div><h3><span class="tag sci">Học thuật</span>Công bố bài báo quốc tế và nhận học bổng toàn phần Thạc sĩ</h3><p>Bài báo trên Trends in Sciences (tháng 2), báo cáo theo lời mời tại Trường ĐH Tôn Đức Thắng (tháng 5), thành viên ban tổ chức và báo cáo viên Hội nghị BME11 (tháng 7), nhập học Thạc sĩ Kỹ thuật Y sinh tại Trường ĐH Quốc tế (tháng 9).</p></div></li>
+      <li><span class="y">2026</span><div><h3><span class="tag edu">Giảng dạy</span>V2P Education có 10 giáo viên</h3><p>Học sinh khóa 2k8 đậu Ngoại thương, Bách khoa, Kinh tế TP.HCM, Kinh tế – Luật, Khoa học Tự nhiên, Sư phạm TP.HCM và nhiều trường khác.</p></div></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Học sinh đã đậu vào<small>Hai khóa 2k7 và 2k8</small></h2>
+    <ul class="chips">
+      <li>ĐH Ngoại thương</li><li>ĐH Bách khoa</li><li>ĐH Kinh tế TP.HCM</li><li>ĐH Kinh tế – Luật</li><li>ĐH Khoa học Tự nhiên</li><li>ĐH Quốc tế</li><li>ĐH Khoa học Xã hội và Nhân văn</li><li>ĐH Sư phạm TP.HCM</li><li>ĐH Công nghệ Kỹ thuật TP.HCM</li><li>ĐH Luật TP.HCM</li><li>ĐH Ngân hàng TP.HCM</li><li>ĐH Giao thông vận tải TP.HCM</li><li>ĐH Công nghiệp TP.HCM</li><li>ĐH Công Thương TP.HCM</li><li>ĐH Nông Lâm TP.HCM</li><li>ĐH Mở TP.HCM</li><li>ĐH Sài Gòn</li><li>ĐH Y Dược Huế</li><li>ĐH Kinh tế Đà Nẵng</li><li>Học viện Công nghệ Bưu chính Viễn thông</li><li>Học viện Hành chính và Quản trị công</li><li>ĐH Hoa Sen</li><li>ĐH Nguyễn Tất Thành</li><li>ĐH Văn Lang</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Xem tiếp</h2>
+    <div class="cards">
+      <a class="card" href="#hoc-thuat"><span class="meta">HỌC THUẬT</span><h3>Nghiên cứu, công bố và báo cáo theo lời mời</h3><p>Từ tế bào hình sao gan đến vật liệu sinh học từ tơ tằm.</p><span class="go">Mở trang Học thuật →</span></a>
+      <a class="card" href="#giang-day"><span class="meta">GIẢNG DẠY</span><h3>V2P Education và các khóa học sinh đã dạy</h3><p>Danh sách học sinh theo từng trường đại học, kèm cảm nhận của các em.</p><span class="go">Mở trang Giảng dạy →</span></a>
+    </div>
+  </section>
+</div>
+
+<!-- ============ 2. HỌC THUẬT ============ -->
+<div class="view" data-view="hoc-thuat" hidden>
+  <div class="pagehead">
+    <p class="eyebrow">Học thuật</p>
+    <h1>Nghiên cứu vật liệu sinh học và y sinh học tái tạo</h1>
+    <p>Học vấn, đề tài, công bố khoa học, các buổi báo cáo theo lời mời và hoạt động hỗ trợ giảng dạy ở bậc đại học.</p>
+  </div>
+
+  <section class="block">
+    <h2>Học vấn</h2>
+    <ul class="rows">
+      <li><h3>Thạc sĩ Kỹ thuật Y sinh (đang học)</h3><span class="side">Từ 9/2026</span><p>Trường Đại học Quốc tế, ĐHQG-HCM. Học bổng toàn phần.</p></li>
+      <li><h3>Cử nhân Công nghệ Sinh học</h3><span class="side">Khóa 2020 · tốt nghiệp 2025</span><p>Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. Loại Giỏi, GPA 3.49/4.0.</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Lĩnh vực quan tâm</h2>
+    <ul class="chips">
+      <li>Vật liệu sinh học</li><li>Y học tái tạo</li><li>Kỹ nghệ mô</li><li>Nuôi cấy tế bào</li><li>In sinh học 3D</li><li>Hệ dẫn truyền thuốc</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Công bố khoa học</h2>
+    <div class="card">
+      <span class="meta">BÀI BÁO QUỐC TẾ · ĐỒNG TÁC GIẢ THỨ NHẤT</span>
+      <h3>Dynamic Expression of E2F1 and eEF1A1 During Lipopolysaccharide-Induced Activation of Primary Hepatic Stellate Cells</h3>
+      <p class="pub">Thanh Minh Dang<sup>#</sup>, <b>Phuoc Phu Van</b><sup>#</sup>, Trinh Van Le, Uyen Luu Thao Nguyen, Tu Nguyen Anh Le, Nhan Ngo The Tran, Long Thanh Le, Nhung Hai Truong. <i>Trends in Sciences</i>, 2026; 23(7): 11708. Xuất bản ngày 10/02/2026.</p>
+      <p class="note"><sup>#</sup> Hai tác giả đóng góp ngang nhau.</p>
+      <a class="go" href="https://doi.org/10.48048/tis.2026.11708">doi.org/10.48048/tis.2026.11708 →</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Báo cáo theo lời mời<small>Trao đổi học thuật</small></h2>
+    <div class="stack">
+      <div class="card">
+        <span class="meta">07/05/2026 · TRƯỜNG ĐẠI HỌC TÔN ĐỨC THẮNG</span>
+        <h3>Tổng quan sinh lý trong nuôi cấy tế bào động vật in vitro</h3>
+        <p>Buổi sinh hoạt học thuật của Nhóm Nghiên cứu Dược liệu, Khoa Dược, Trường Đại học Tôn Đức Thắng.</p>
+        <div class="pair">
+          <figure><button class="zoom" type="button" data-full="img/thu-moi-tdtu.jpg" aria-label="Phóng to: Thư mời báo cáo"><img src="img/thu-moi-tdtu.jpg" alt="Thư mời báo cáo học thuật từ Nhóm Nghiên cứu Dược liệu, Trường Đại học Tôn Đức Thắng" loading="lazy"></button><figcaption>Thư mời báo cáo</figcaption></figure>
+          <figure><button class="zoom photo" type="button" data-full="img/seminar-tdtu.jpg" aria-label="Phóng to: Chụp cùng người tham dự sau buổi seminar"><img src="img/seminar-tdtu.jpg" alt="Văn Phú Phước chụp ảnh cùng người tham dự sau buổi seminar tại Trường Đại học Tôn Đức Thắng" loading="lazy"></button><figcaption>Chụp cùng người tham dự sau buổi seminar</figcaption></figure>
+        </div>
+      </div>
+      <div class="card">
+        <span class="meta">13/02/2025 · TRƯỜNG ĐẠI HỌC KHOA HỌC TỰ NHIÊN</span>
+        <h3>Phân tích dữ liệu hình ảnh trong nghiên cứu bằng phần mềm ImageJ</h3>
+        <p>Buổi báo cáo học thuật tại Phòng thí nghiệm Y sinh học Tái tạo, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.</p>
+        <div class="pair">
+          <figure><button class="zoom" type="button" data-full="img/thu-moi-ptn.jpg" aria-label="Phóng to: Thư mời báo cáo"><img src="img/thu-moi-ptn.jpg" alt="Thư mời báo cáo học thuật từ Phòng thí nghiệm Y sinh học Tái tạo" loading="lazy"></button><figcaption>Thư mời báo cáo</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Hội nghị</h2>
+    <ul class="rows">
+      <li><h3>Hội nghị Quốc tế về sự phát triển Kỹ thuật Y sinh lần thứ 11 (BME11)</h3><span class="side">29–31/07/2026</span><p>Thành viên ban tổ chức và báo cáo viên. Cam Ranh, Nha Trang. Hội nghị do Trường Đại học Quốc tế, ĐHQG-HCM phối hợp Trường Đại học Nha Trang tổ chức.</p></li>
+      <li><h3>Hội nghị Khoa học trẻ lần II, năm 2025 (VNU-HCMUS YSC 2025)</h3><span class="side">08/06/2025</span><p>Báo cáo miệng kết quả nghiên cứu. Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Đề tài nghiên cứu</h2>
+    <div class="stack">
+      <div class="card">
+        <span class="meta">BẬC THẠC SĨ · ĐANG THỰC HIỆN</span>
+        <h3>Vật liệu sinh học từ tơ tằm cho y học tái tạo</h3>
+        <p>Nghiên cứu vật liệu nguồn gốc tơ tằm (silk fibroin) ứng dụng trong chăm sóc vết thương, kỹ nghệ mô và dẫn truyền thuốc.</p>
+      </div>
+      <div class="card">
+        <span class="meta">KHÓA LUẬN CỬ NHÂN · PTN Y SINH HỌC TÁI TẠO</span>
+        <h3>Biểu hiện gen E2F1 và eEF1A1 khi tế bào hình sao gan được hoạt hóa bởi LPS</h3>
+        <p>Kết quả cho thấy eEF1A1 hoạt động chủ yếu ở giai đoạn sớm, còn E2F1 tăng ở giai đoạn muộn của quá trình hoạt hóa. Đề tài góp thêm dữ liệu để hiểu cơ chế xơ gan và là nền của bài báo trên Trends in Sciences.</p>
+        <ul class="dots">
+          <li>Phân lập và nuôi cấy tế bào sơ cấp</li>
+          <li>Phân tích biểu hiện gen bằng RT-qPCR, nhuộm miễn dịch tế bào (ICC)</li>
+          <li>Đánh giá khả năng sống và chức năng tế bào: CCK-8, nhuộm Oil Red O</li>
+          <li>Chụp hiển vi và định lượng ảnh bằng ImageJ; thiết kế thí nghiệm, phân tích số liệu</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Hoạt động ở đại học<small>Hỗ trợ giảng dạy và dẫn dắt nhóm</small></h2>
+    <ul class="rows">
+      <li><h3>Ôn thi cuối kỳ môn Tin sinh học</h3><span class="side">Có video bên dưới</span><p>Hướng dẫn các bạn cùng khóa ôn tập trước kỳ thi.</p></li>
+      <li><h3>Ôn tập thực hành Hóa sinh và Sinh học phân tử</h3><span class="side">Có video bên dưới</span><p>Hệ thống lại kiến thức và thao tác cho các học phần thực hành.</p></li>
+      <li><h3>Lớp ôn môn Công nghệ gen</h3><span class="side">Đến 50 sinh viên</span><p>Buổi ôn cho bạn học cùng ngành.</p></li>
+      <li><h3>Trưởng nhóm nghiên cứu sinh viên</h3><span class="side">10 thành viên</span><p>Dẫn dắt nhóm 10 sinh viên đại học thực hiện một đề tài nghiên cứu.</p></li>
+      <li><h3>Chia sẻ kinh nghiệm làm thí nghiệm</h3><span class="side">PTN Y sinh học tái tạo</span><p>Hướng dẫn kỹ thuật cho các thành viên trong nhóm nghiên cứu.</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Video buổi ôn tập<small>Ghi hình các buổi mình hướng dẫn bạn cùng khóa. Mở trên YouTube.</small></h2>
+    <div class="cards three">
+      <a class="card" href="https://www.youtube.com/watch?v=xHTbR8-xpkI"><span class="meta">2 GIỜ 02 PHÚT · 2022</span><h3>Thực tập Tin sinh học</h3><span class="go">Xem video →</span></a>
+      <a class="card" href="https://www.youtube.com/watch?v=LGxPXBa80Oc"><span class="meta">2 GIỜ 02 PHÚT · 2022</span><h3>Ôn tập Hóa sinh</h3><span class="go">Xem video →</span></a>
+      <a class="card" href="https://www.youtube.com/watch?v=QzgOzQ7c_O4"><span class="meta">49 PHÚT</span><h3>Ôn tập thực tập Sinh học phân tử</h3><span class="go">Xem video →</span></a>
+    </div>
+  </section>
+</div>
+
+<!-- ============ 3. GIẢNG DẠY & V2P ============ -->
+<div class="view" data-view="giang-day" hidden>
+  <div class="pagehead">
+    <p class="eyebrow">Giảng dạy &amp; V2P Education</p>
+    <h1>Dạy Toán và luyện thi từ năm 2020</h1>
+    <p>Giới thiệu trung tâm V2P Education, quá trình đứng lớp, kết quả của học sinh và cảm nhận các em gửi lại.</p>
+  </div>
+
+  <section class="block">
+    <h2>V2P Education</h2>
+    <div class="stack">
+      <div class="prose">
+        <p>V2P Education là trung tâm chuyên luyện thi cho học sinh cấp 2 và cấp 3 tại TP.HCM, do mình sáng lập năm 2025. Trung tâm hiện có 10 giáo viên. Mình trực tiếp dạy Toán, đồng thời quản lý đội ngũ, biên soạn tài liệu và điều phối chương trình luyện thi.</p>
+        <p>Lớp học trực tiếp tại TP.HCM và có lớp online song song qua Google Meet.</p>
+      </div>
+      <ul class="chips">
+        <li>Toán lớp 6 đến 12</li><li>Vật lý</li><li>Hóa học</li><li>Tiếng Anh</li><li>Luyện thi Đánh giá năng lực</li><li>Luyện thi tốt nghiệp THPT</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Hình ảnh lớp học<small>Bấm vào ảnh để xem lớn</small></h2>
+    <div class="certs">
+      <figure><button class="zoom photo" type="button" data-full="img/lop-1.jpg" aria-label="Phóng to: Một buổi học tại V2P Education"><img src="img/lop-1.jpg" alt="Học sinh ngồi kín lớp học tại V2P Education, cùng giơ tay chào" loading="lazy"></button><figcaption>Một buổi học tại V2P Education</figcaption></figure>
+      <figure><button class="zoom photo" type="button" data-full="img/lop-2.jpg" aria-label="Phóng to: Học sinh tổ chức sinh nhật cho thầy"><img src="img/lop-2.jpg" alt="Học sinh cầm bóng bay, đứng quanh bàn tiệc sinh nhật tại lớp" loading="lazy"></button><figcaption>Học sinh tổ chức sinh nhật cho thầy</figcaption></figure>
+      <figure><button class="zoom photo" type="button" data-full="img/lop-3.jpg" aria-label="Phóng to: Sinh nhật thầy cùng cả lớp"><img src="img/lop-3.jpg" alt="Học sinh cầm tấm băng rôn chúc mừng sinh nhật thầy tại lớp" loading="lazy"></button><figcaption>Sinh nhật thầy cùng cả lớp</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Kết quả nổi bật<small>Theo khảo sát cuối khóa do học sinh tự điền</small></h2>
+    <div class="stack">
+      <ul class="facts">
+        <li><span class="k">49 học sinh</span><span class="v">Hai khóa 2k7 và 2k8 báo đậu đại học. 11 em vào các trường thành viên ĐHQG-HCM.</span></li>
+        <li><span class="k">9,25 điểm Toán</span><span class="v">Điểm thi THPT cao nhất khóa 2k8. 16 trong 19 em báo điểm đạt từ 7 trở lên, trung bình của nhóm này là 8,2.</span></li>
+        <li><span class="k">999 điểm ĐGNL</span><span class="v">Điểm Đánh giá năng lực cao nhất khóa 2k8. 12 trong 17 em báo điểm đạt từ 800 trở lên.</span></li>
+      </ul>
+      <ul class="rows">
+        <li><h3>Hai học sinh đạt trên 1.000 điểm Đánh giá năng lực</h3><span class="side">Lứa học sinh 2021</span><p>Thành tích của học sinh luyện thi cùng mình.</p></li>
+        <li><h3>Hầu hết học sinh lớp 12 đạt mức 8 điểm và vào các trường đại học lớn</h3><span class="side">2020</span><p>Lớp 12 tại trung tâm Thuận An, Quận 12.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Học sinh đậu đại học<small>Số sau tên trường là số học sinh</small></h2>
+    <div class="stack">
+      <div class="card">
+        <span class="meta">KHÓA 2K8 · THI NĂM 2026 · 30 HỌC SINH</span>
+        <ul class="chips">
+          <li>ĐH Công nghiệp TP.HCM (IUH)<b>4</b></li>
+          <li>ĐH Kinh tế TP.HCM (UEH)<b>3</b></li>
+          <li>ĐH Luật TP.HCM<b>3</b></li>
+          <li>ĐH Kinh tế – Luật (UEL)<b>2</b></li>
+          <li>ĐH Khoa học Tự nhiên<b>2</b></li>
+          <li>ĐH Sư phạm TP.HCM<b>2</b></li>
+          <li>ĐH Công nghệ Kỹ thuật TP.HCM (HCMUTE)<b>2</b></li>
+          <li>ĐH Giao thông vận tải TP.HCM (UTH)<b>2</b></li>
+          <li>ĐH Công Thương TP.HCM (HUIT)<b>2</b></li>
+          <li>ĐH Bách khoa<b>1</b></li>
+          <li>ĐH Ngoại thương (cơ sở TP.HCM)<b>1</b></li>
+          <li>ĐH Khoa học Xã hội và Nhân văn<b>1</b></li>
+          <li>ĐH Mở TP.HCM<b>1</b></li>
+          <li>ĐH Sài Gòn<b>1</b></li>
+          <li>Học viện Công nghệ Bưu chính Viễn thông<b>1</b></li>
+          <li>ĐH Y Dược Huế<b>1</b></li>
+          <li>ĐH Kinh tế Đà Nẵng<b>1</b></li>
+        </ul>
+        <p class="stat"><b>Toán THPT:</b> cao nhất 9,25; trung bình 8,2 trong nhóm đạt từ 7 điểm trở lên (16 trong 19 em báo điểm). <b>ĐGNL:</b> trung bình 835, cao nhất 999. Có một em đạt 10 điểm Hóa và 10 điểm Lý.</p>
+        <h3 class="sub">Danh sách học sinh</h3>
+        <ul class="roster">
+          <li><b>Trần Nguyễn Hà My</b><span>ĐH Ngoại thương (cơ sở TP.HCM)</span></li>
+          <li><b>Nguyễn Kim Gia Bảo</b><span>ĐH Bách khoa, ĐHQG-HCM</span></li>
+          <li><b>Trần Nguyễn Hà Nguyên</b><span>ĐH Kinh tế TP.HCM (UEH)</span></li>
+          <li><b>Lê Xuân Thủy</b><span>ĐH Kinh tế TP.HCM (UEH)</span></li>
+          <li><b>Nguyễn Ngọc Hà My</b><span>ĐH Kinh tế TP.HCM (UEH)</span></li>
+          <li><b>Nguyễn Thị Thảo Vy</b><span>ĐH Kinh tế – Luật (UEL), ĐHQG-HCM</span></li>
+          <li><b>Trần Vũ Thuý Quỳnh</b><span>ĐH Kinh tế – Luật (UEL), ĐHQG-HCM</span></li>
+          <li><b>Nguyễn Phương Anh</b><span>ĐH Khoa học Tự nhiên, ĐHQG-HCM</span></li>
+          <li><b>Kim Ngọc Hải Huy</b><span>ĐH Khoa học Tự nhiên, ĐHQG-HCM</span></li>
+          <li><b>Phạm Thuý Hiền</b><span>ĐH Khoa học Xã hội và Nhân văn, ĐHQG-HCM</span></li>
+          <li><b>Trần Phương Loan</b><span>ĐH Sư phạm TP.HCM</span></li>
+          <li><b>Võ Huỳnh Minh Hiền</b><span>ĐH Sư phạm TP.HCM</span></li>
+          <li><b>Nguyễn Bảo Phúc</b><span>ĐH Công nghệ Kỹ thuật TP.HCM (HCMUTE)</span></li>
+          <li><b>Hà Thị Quỳnh Như</b><span>ĐH Công nghệ Kỹ thuật TP.HCM (HCMUTE)</span></li>
+          <li><b>Dương Thị Thu Trang</b><span>ĐH Luật TP.HCM</span></li>
+          <li><b>Võ Thanh Nhân</b><span>ĐH Luật TP.HCM</span></li>
+          <li><b>Lê Hải Dương</b><span>ĐH Luật TP.HCM</span></li>
+          <li><b>Nguyễn Mai Anh</b><span>ĐH Công nghiệp TP.HCM (IUH)</span></li>
+          <li><b>Trần Nguyễn Quang Huy</b><span>ĐH Công nghiệp TP.HCM (IUH)</span></li>
+          <li><b>Lê Nho Nhật Minh</b><span>ĐH Công nghiệp TP.HCM (IUH)</span></li>
+          <li><b>Lê Nho Nhật Luân</b><span>ĐH Công nghiệp TP.HCM (IUH)</span></li>
+          <li><b>Nguyễn Hoàng Chí Huy</b><span>ĐH Giao thông vận tải TP.HCM (UTH)</span></li>
+          <li><b>Nguyễn Ngọc Phương Linh</b><span>ĐH Giao thông vận tải TP.HCM (UTH)</span></li>
+          <li><b>Nguyễn Kim Phụng</b><span>ĐH Công Thương TP.HCM (HUIT)</span></li>
+          <li><b>Phan Kim Phụng</b><span>ĐH Công Thương TP.HCM (HUIT)</span></li>
+          <li><b>Minh Anh</b><span>ĐH Mở TP.HCM</span></li>
+          <li><b>Phan Thị Thanh Ngọc</b><span>ĐH Sài Gòn</span></li>
+          <li><b>Lê Thanh Huyền</b><span>Học viện Công nghệ Bưu chính Viễn thông</span></li>
+          <li><b>Ý Vy</b><span>ĐH Y Dược Huế</span></li>
+          <li><b>Nguyễn Thuỳ Linh</b><span>ĐH Kinh tế Đà Nẵng</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="meta">KHÓA 2K7 · THI NĂM 2025 · 19 HỌC SINH</span>
+        <ul class="chips">
+          <li>ĐH Giao thông vận tải TP.HCM (UTH)<b>3</b></li>
+          <li>ĐH Bách khoa<b>2</b></li>
+          <li>ĐH Ngân hàng TP.HCM (HUB)<b>2</b></li>
+          <li>ĐH Kinh tế – Luật (UEL)<b>1</b></li>
+          <li>ĐH Quốc tế<b>1</b></li>
+          <li>ĐH Khoa học Xã hội và Nhân văn<b>1</b></li>
+          <li>ĐH Công nghệ Kỹ thuật TP.HCM (HCMUTE)<b>1</b></li>
+          <li>ĐH Sư phạm TP.HCM<b>1</b></li>
+          <li>ĐH Luật TP.HCM<b>1</b></li>
+          <li>ĐH Nông Lâm<b>1</b></li>
+          <li>ĐH Mở TP.HCM<b>1</b></li>
+          <li>Học viện Hành chính và Quản trị công<b>1</b></li>
+          <li>ĐH Hoa Sen<b>1</b></li>
+          <li>ĐH Nguyễn Tất Thành<b>1</b></li>
+          <li>ĐH Văn Lang<b>1</b></li>
+        </ul>
+        <p class="stat"><b>Toán THPT:</b> cao nhất 8,0. <b>ĐGNL:</b> cao nhất 870. Đây là khóa đầu tiên thi theo chương trình mới.</p>
+        <h3 class="sub">Danh sách học sinh</h3>
+        <ul class="roster">
+          <li><b>Nguyễn Mai Trí Dũng</b><span>ĐH Bách khoa, ĐHQG-HCM</span></li>
+          <li><b>Nguyễn Thị Kim Chi</b><span>ĐH Bách khoa, ĐHQG-HCM</span></li>
+          <li><b>Võ Ngọc Kim Ngân</b><span>ĐH Kinh tế – Luật (UEL), ĐHQG-HCM</span></li>
+          <li><b>Văn Phú Lộc</b><span>ĐH Quốc tế, ĐHQG-HCM</span></li>
+          <li><b>Phan Thị Thanh Thuý</b><span>ĐH Khoa học Xã hội và Nhân văn, ĐHQG-HCM</span></li>
+          <li><b>Nguyễn Hồ Tuệ Mẫn</b><span>ĐH Công nghệ Kỹ thuật TP.HCM (HCMUTE)</span></li>
+          <li><b>Hoàng Minh Nhật</b><span>ĐH Sư phạm TP.HCM</span></li>
+          <li><b>Đoàn Ngọc Thành</b><span>ĐH Luật TP.HCM</span></li>
+          <li><b>Thân Minh Khang</b><span>ĐH Ngân hàng TP.HCM (HUB)</span></li>
+          <li><b>Võ Duy Khôi</b><span>ĐH Ngân hàng TP.HCM (HUB)</span></li>
+          <li><b>Nguyễn Ngọc Lan Phương</b><span>ĐH Giao thông vận tải TP.HCM (UTH)</span></li>
+          <li><b>Nguyễn Hải Nam</b><span>ĐH Giao thông vận tải TP.HCM (UTH)</span></li>
+          <li><b>Trần Nguyễn Hải Quân</b><span>ĐH Giao thông vận tải TP.HCM (UTH)</span></li>
+          <li><b>Kim Hương</b><span>ĐH Nông Lâm TP.HCM</span></li>
+          <li><b>Nguyễn Mạnh Hùng</b><span>ĐH Mở TP.HCM</span></li>
+          <li><b>Lê Nguyễn Nhật Vy</b><span>Học viện Hành chính và Quản trị công</span></li>
+          <li><b>Vũ Thị Như Quỳnh</b><span>ĐH Hoa Sen</span></li>
+          <li><b>Nguyễn Khánh Dương</b><span>ĐH Nguyễn Tất Thành</span></li>
+          <li><b>Huỳnh Hân</b><span>ĐH Văn Lang</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Học sinh nói gì<small>Nguyên văn lời các em viết trong khảo sát cuối khóa</small></h2>
+    <div class="stack">
+      <h3 class="sub">Khóa 2k8 · thi năm 2026</h3>
+      <div class="quotes">
+        <blockquote class="q"><p>Em thật sự muốn gửi lời cảm ơn đến anh Phước vì trong suốt thời gian học, anh không chỉ nhiệt tình giảng bài mà còn luôn tận tâm chia sẻ những kinh nghiệm, cách học và những góc nhìn rất thực tế.</p><p>Điều em ấn tượng nhất chính là sự nhiệt tình của anh. Có những bài Toán tưởng như rất khó, nhưng qua cách anh giải thích lại trở nên dễ hiểu và thú vị hơn rất nhiều. Không chỉ dạy kiến thức, anh còn truyền cho em động lực để cố gắng, kiên trì, vì chính anh cũng đang cố gắng để theo đuổi ước mơ và e có thể cảm nhận sự nhiệt huyết và quyết liệt ấy để lấy làm động lực riêng. Hi vọng sau này em có thể cháy với sức trẻ như a Phước</p><p>Cảm ơn anh vì những buổi học đầy năng lượng, vì sự kiên nhẫn, tận tâm và những kinh nghiệm anh đã chia sẻ. Có lẽ điều quý giá nhất em nhận được không chỉ là kiến thức Toán, mà còn là cảm hứng để học tập và không ngại thử thách bản thân. ❤️</p><cite><b>Nguyễn Ngọc Hà My</b> · ĐH Kinh tế TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>"Ai cũng phải lớn" bản thân em hiểu rất rõ quy luật đó nhưng khi bước vào độ tuổi 18 với đầy bỡ ngỡ, hoang mang, rối rắm, thách thức thì việc được gặp gỡ những người bạn và thầy Phước tận tâm thì hành trình cấp 3 của em càng trở nên đáng quý. Anh Phước vừa là thầy vừa là anh trong suốt 1 năm học vừa qua, em không còn tiếp cận môn toán bằng sự ghét bỏ, gượng ép, mà đã dần yêu thích những giá trị mà nó đem lại cho cuộc sống và tương lai của bản thân em. Hành trình nào cũng sẽ có điểm dừng, 8.25 điểm Toán THPTQG đã chính thức khép lại hành trình này, là con số phản ánh năng lực của em, là nỗ lực trong việc giảng dạy của thầy Phước. Cảm ơn thầy vì tất cả.</p><p>"Câu mà em không làm được và câu mà em làm sai đều cùng không có điểm".</p><cite><b>Trần Phương Loan</b> · ĐH Sư phạm TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>Trải nghiệm của em về quá trình học tập với Trung tâm thật sự rất ý nghĩa. Tại vì cá nhân em không phải người giỏi về môn Toán nên lúc đầu em vẫn không bắt kịp tiến độ của các bạn rồi dần dần nản chí nhẹ với nó:(. Nhưng mà sau đó thì nhờ anh Phước và các bạn rất thân thiện nên em cũng mở lòng hơn và cố gắng hơn với môn học mà bản thân thấy rất "khô khan". Kết quả đợt thi này với em chính xác là một chặng hành trình dài em tập trung với nó và cũng là quá trình em được dẫn dắt từ a.Phước - Trung tâm mình. Thật sự cám ơn a Phước và các bạn rất nhiều ạ</p><cite><b>Phan Thị Thanh Ngọc</b> · ĐH Sài Gòn</cite></blockquote>
+        <blockquote class="q"><p>E từng cảm thấy khá mông lung vs môn toán, không phải là quá dở nma đủ để bật lên thì chưa. May mắn là đến năm 12 e đc gặp gỡ và đồng hành cùng a Phước. E dần cảm thấy mình có phần tự tin hơn và dần có mong muốn cho những con điểm cao hơn. Không chỉ v trg quá trình học tập và tư vấn nv ngành nghề, a Phước đã cho e khá nhiều lời khuyên ok, giúp e tìm được những phương án khác thay thế để có thể học được ở ngôi trường e mong muốn. E may mắn có đc tài nguyên khá ok là ielts và đgnl, những tài nguyên này cái nào cũng có công của a Phước cả. Từ đgnl là những trick và phương pháp làm bài của anh cho đến việc gth cho e học trò của a để giúp e học và nâng band ielts. Sau tất cả e chỉ muốn gửi lời tri ân và cảm ơn chân thành nhất đến Mr. Phước</p><cite><b>Nguyễn Thị Thảo Vy</b> · ĐH Kinh tế – Luật</cite></blockquote>
+        <blockquote class="q"><p>Điều khiến em cảm thấy gắn bó nhất chính là sự nhiệt tình, tận tâm của các thầy cô và không khí ấm áp, gần gũi như một gia đình của lớp mình. Mỗi buổi học đến trung tâm không chỉ là để tiếp thu kiến thức mới mà còn mang lại cho em rất nhiều niềm vui và động lực.</p><p>Em xin gửi lời cảm ơn chân thành nhất đến trung tâm và các thầy cô. Cảm ơn mọi người đã luôn kiên nhẫn đồng hành, lắng nghe và tạo ra môi trường học tập tuyệt vời nhất để chúng em được trưởng thành hơn mỗi ngày.</p><cite><b>Nguyễn Kim Gia Bảo</b> · ĐH Bách khoa</cite></blockquote>
+        <blockquote class="q"><p>Đặc biệt nhất chắc là sự nhiệt huyết và năng động của anh Phước rồi, ngoài ra cách anh Phước tổ chức và xây dựng không khí buổi học cũng rất thoải mái ạ nên em không bị áp lực hay gò bó nói chung là bơ phẹt</p><p>Không biết nói gì hơn ngoài lời cảm ơn sự tận tâm của anh và chúc V2P EDU ngày càng phát triển nhé!!!</p><cite><b>Trần Vũ Thuý Quỳnh</b> · ĐH Kinh tế – Luật</cite></blockquote>
+        <blockquote class="q"><p>Sự nhiệt tình của các thầy cô, đặc biệt thầy Trường và thầy Phước</p><p>Chúc cho V2P sẽ càng ngày càng phát triển và nhiều bạn học sinh biết đến hơn nữa thông qua chất lượng giảng dạy cũng như sự nhiệt huyết của các giáo viên</p><cite><b>Trần Nguyễn Hà Nguyên</b> · ĐH Kinh tế TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>Thầy chuyên nghiệp và gần gũi, thân thiện, cảm giác như 1 người anh trai.</p><cite><b>Nguyễn Mai Anh</b> · ĐH Công nghiệp TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>Có những hành trình rồi sẽ khép lại, nhưng những người mình gặp và những kỷ niệm mình có được thì vẫn sẽ ở lại. ❤️</p><p>Cảm ơn các bạn và anh Phước vì đã cùng nhau đi qua một chặng đường thật đặc biệt tại V2P. Cảm ơn những buổi học, những tiếng cười, những lần cùng nhau cố gắng và cả những lúc động viên nhau bước tiếp.</p><p>Có lẽ điều đáng quý nhất sau hành trình này không chỉ là những gì chúng ta đã học được, mà là chúng ta đã gặp nhau, đồng hành cùng nhau và cùng trưởng thành.</p><p>Sau này nhìn lại, mong rằng chúng ta vẫn sẽ mỉm cười vì đã từng có một khoảng thời gian như thế. 🤍</p><cite><b>Dương Thị Thu Trang</b> · ĐH Luật TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>Em thấy lộ trình học siêu đầy đủ, chất lượng, anh chị rất yêu thương tụi em, giảng bài tận tình, hay</p><p>Em rất vui khi đã được biết đến trung tâm giảng dạy của bên anh chị, dù chỉ là học online trên google meet nhưng sự giảng dạy của bên trung tâm vẫn rất là tuyệt vời và sự giảng dạy rất dễ hiểu và rất là hay lun</p><cite><b>Nguyễn Thuỳ Linh</b> · ĐH Kinh tế Đà Nẵng</cite></blockquote>
+        <blockquote class="q"><p>Cảm ơn trung tâm vì siêu nhiệt tình giúp đỡ em dù em là một học sinh học online</p><p>Dù cho gắn bó với lớp một thời gian rất ngắn nhưng em cảm thấy rất vui, mọi người rất vui vẻ và em cảm nhận mình đc quan tâm rất nhiều (≧▽≦)</p><cite><b>Ý Vy</b> · ĐH Y Dược Huế</cite></blockquote>
+      </div>
+      <h3 class="sub">Khóa 2k7 · thi năm 2025</h3>
+      <div class="quotes">
+        <blockquote class="q"><p>Thật lòng, anh Phước là một người thầy cũng như là người anh mà em vô cùng yêu quý và ngưỡng mộ.Em nghĩ anh là một người vô cùng đáng để em học hỏi nhiều điều, bên cạnh đó em nghĩ anh Phước cũng là một người thầy vô cùng đặc biệt và hiếm hoi khi anh không chỉ dạy những kiến thức trong sách mà còn cung cấp thêm cho bọn em những kĩ năng và góc nhìn mới trong cuộc sống, điều đó khiến em thấy đi học gặp anh vô cùng thú vị và học hỏi thêm được nhiều giá trị mới, em rất trân trọng những giá trị đó và thời gian được học ở nhà anh.</p><cite><b>Nguyễn Hải Nam</b> · ĐH Giao thông vận tải TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>Thật sự thì trước khi vô em khá lo do chưa quen ai nhưng mà anh Phước với Phú Lộc rất cởi mở luôn ak nên giúp em dễ hoà nhập hơn, lần đầu thấy quả lớp học muốn học bao nhiêu thì ở lại bấy nhiêu mà tiếng vẫn ko tăng????? giáo viên còn chia ra 2 người dạy nữa trời ơi trời. Cô chú ( ba má của anh Phước ) nhiệt tình lắm lắm như ba má e thiệt luôn lần đầu được học xong xuống đá tô bún free ra về có ng dắt xe cho xong còn được quan tâm tới khi nghỉ nhiều nữa huhu. Tài liêụ thì tuyệt vời luôn, không hiểu kiểu gì mà e thề là chỉ mở cuốn đề ra luyện full trắc nghiệm thôi nha mà thi 7 điểm Toán =))))))))))) ảo ma đỉnh. Thật sự anh Phước rất giỏi e nể lắm á kiểu anh như cha Huy forum á gì cũng biết, thành công nhiều thành tựu còn thương Phú Lộc nữa heheh.</p><cite><b>Thân Minh Khang</b> · ĐH Ngân hàng TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>Thầy nhiệt tình, vễ huông, quan tâm học sinh thì thôi nhé, có thể nói là thầy giáo chịu khó nhất tôi từng gặp😝 ( khổ nhất thế giới nữa ). Giảng chi tiết, hay dễ nhớ, và có thể giảng đi giảng lại nhiều lần cho mấy đứa ngu ngơ=)) (vd: VTNQ). Thầy hiền, nhưng không dễ tính😈. Lớp học vui nhộn, hoà đồng như gia đình, nhưng không thiếu không khí lúc nào cũng học hỏi và trao dồi kiến thức của nhau. Học ở đây, với thầy, các bạn rất thoải máii. Không bị lười đi học!! Chỉ muốn tới lúc học thim toán thoi.</p><cite><b>Vũ Thị Như Quỳnh</b> · ĐH Hoa Sen</cite></blockquote>
+        <blockquote class="q"><p>nếu nghề tay phải của anh là dạy toán thì nghề tay trái của a là streamer tại anh hay khều donate :)))) lần đầu gặp anh anh bảo em donate anh mua Rolex, lâu lâu e thấy anh đăng cap donate anh mua máy in :))) Nhưng mà lúc chưa gặp anh em sợ sẽ ko hợp sợ anh sẽ dữ nhưng gặp mặt lói chuyện vs anh thì em thấy anh vui tính, anh phen ly, em ít hỏi bài nhưng em hỏi bài khuya thì anh vẫn sẵn sàng rep tn em, anh giúp leo rank từ 5đ lên 9,3 đ số điểm em không ngờ mình sẽ có được, lớp mình dethuong lắm em học onl thường xuyên nhưng lúc gặp mặt thì mấy bạn không để em ngồi 1 mình mà vẫn nói chuyện với em. Tuy ko còn học nữa nhưng chúc a thành công, nhận nhiều học sinh các bạn khóa sau, chúc mừng năm mới 🥹</p><cite><b>Huỳnh Hân</b> · ĐH Văn Lang</cite></blockquote>
+        <blockquote class="q"><p>Nếu mà để nói về kỉ niệm đáng nhớ nhất về năm lớp 12 là khi mà mình được học ở lớp học của anh phước, vì anh là nơi em cảm thấy duy nhất việc đi học là niềm vui, là động lực để lên lớp mỗi ngày. Lớp học của anh luôn mang lại cho em những tiếng cười từ tận đáy lòng vì anh không chỉ có những kỹ năng dạy học đỉnh cao mà còn là những câu nói hài hước luôn truyền cảm hứng và động lực cho các học sinh chúng em vui vẻ để cố gắng mỗi ngày. Em là 1 học sinh dù không được biết đến anh sớm hơn nhưng sau 1 thời gian học ngắn ngủi, đâu đó đã bù đắp cho em được biết bao nhiêu thứ. Em mong anh phước và các bạn sắp tới sẽ có những kỷ niệm đáng nhớ hết đời học sinh</p><cite><b>Nguyễn Khánh Dương</b> · ĐH Nguyễn Tất Thành</cite></blockquote>
+        <blockquote class="q"><p>Em chưa học với anh lâu như mấy bạn khác nhưng mà thời gian cuối HK2 e lựa chọn tin tưởng anh thì em nghĩ em đã đặt niềm tin đúng người ròi. Em cảm ơnn anh nhìu nhaaaa, cảm ơnn anh thời gian cuối vẫn dám nhận dạy emm, em hỏi là trả lời liềnnn và em cảm ơnn a vì đã giúp emm trong những tháng quaaa</p><cite><b>Lê Nguyễn Nhật Vy</b> · Học viện Hành chính và Quản trị công</cite></blockquote>
+        <blockquote class="q"><p>Trước tiên cho em cảm ơn thầy vì hành trình vừa qua, thiệt sự em rất biết ơn, thương yêu thầy Phước rất rất rất rất nhiều luôn á. Bên cạnh đó còn có cô chú thương yêu tụi em nữa, nên em coi mn như gđ hơn là 1 lớp học nữa, không biết nói sao cho hết tình cảm của em dành cho gđ mình nữa 🥹. Chắc em không thể hiện cảm xúc mình nhiều lắm, nhưng em quý anh lắm anh Phước oiiiiiiii, kiểu gặp đc anh như cứu tinh của e v á, với lại em nể với ngưỡng mộ anh lắm, nên anh Phút mạnh mẽ lên nheeeeeee. Cảm ơn anh đã dẫn dắt tụi em hành trình vừa qua, em sẽ không quên gđ mình đâu 🥰💝</p><cite><b>Nguyễn Thị Kim Chi</b> · ĐH Bách khoa</cite></blockquote>
+        <blockquote class="q"><p>Tại e thích bé Lu nhà anh:)))) (lí do phụ thoi anh:))</p><p>Anh hài hài tạo bầu ko khí gần gũi làm em ko bị ngại khi muốn hỏi bài và cũng ko ngại trình bày ý kiến của mình khi gặp một bài tập nào đó.</p><p>Anh cũng kì nhiệt tình khi giúp tụi e giải bài tập khó khi ib riêng hỏi✨</p><cite><b>Kim Hương</b> · ĐH Nông Lâm TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>Theo em thấy a phước là người nhiệt tình hỏi gì trả lời gọn gàng chi tiết dễ hiểu học chung cùng với mấy bạn trường khác thấy được mức độ giỏi của mấy bạn làm em ấn tượng…</p><cite><b>Nguyễn Mạnh Hùng</b> · ĐH Mở TP.HCM</cite></blockquote>
+        <blockquote class="q"><p>a Phước dễ thương, dạy dễ hiểuu ân cần chu đáo và quan tâm tới tất cả mọi người</p><p>những điều tốt đẹp nhất sẽ đến với anh Phướcc một người thầy một người anh tận tình, chu đáoo</p><cite><b>Nguyễn Ngọc Lan Phương</b> · ĐH Giao thông vận tải TP.HCM</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Quá trình giảng dạy</h2>
+    <ul class="timeline">
+      <li><span class="y">2020</span><div><h3>Trung tâm Thuận An, Quận 12</h3><p>Dạy Toán và Sinh học cho học sinh lớp 12, hỗ trợ tuyển sinh, cùng đồng nghiệp ôn thi tốt nghiệp.</p></div></li>
+      <li><span class="y">2021</span><div><h3>Gia sư độc lập</h3><p>Kèm học sinh luyện thi THPT và thi tốt nghiệp.</p></div></li>
+      <li><span class="y">2025</span><div><h3>Sáng lập V2P Education</h3><p>Luyện Toán chuyên sâu cho học sinh lớp 12. Khóa 2k7 thi tốt nghiệp và vào đại học.</p></div></li>
+      <li><span class="y">2026</span><div><h3>Mở rộng sang cấp 2 và nhiều môn</h3><p>V2P dạy Toán từ lớp 6 đến lớp 12, thêm Lý, Hóa, Anh và lớp luyện thi Đánh giá năng lực, với 10 giáo viên. Khóa 2k8 vào đại học.</p></div></li>
+    </ul>
+  </section>
+</div>
+
+<!-- ============ 4. CHỨNG CHỈ ============ -->
+<div class="view" data-view="chung-chi" hidden>
+  <div class="pagehead">
+    <p class="eyebrow">Chứng chỉ</p>
+    <h1>Bằng cấp, chứng chỉ và giải thưởng</h1>
+    <p>Xếp theo nhóm, kèm đơn vị cấp và thời gian ghi trên từng văn bản.</p>
+  </div>
+
+  <section class="block">
+    <h2>Bằng cấp và học bổng</h2>
+    <ul class="rows">
+      <li><h3>Học bổng toàn phần chương trình Thạc sĩ Kỹ thuật Y sinh</h3><span class="side">2026</span><p>Trường Đại học Quốc tế, ĐHQG-HCM.</p></li>
+      <li><h3>Bằng Cử nhân Công nghệ Sinh học, loại Giỏi</h3><span class="side">Tốt nghiệp 2025</span><p>Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. GPA 3.49/4.0.</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Ngoại ngữ</h2>
+    <ul class="rows">
+      <li><h3>IELTS Academic 6.0, trình độ B2</h3><span class="side">Thi ngày 20/04/2025</span><p>Listening 5.5 · Reading 6.0 · Writing 5.5 · Speaking 6.0.</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Nghiên cứu khoa học</h2>
+    <ul class="rows">
+      <li><h3>Giấy chứng nhận tham gia Hội nghị Khoa học trẻ lần II, năm 2025</h3><span class="side">08/06/2025</span><p>Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM (VNU-HCMUS YSC 2025).</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Giải thưởng</h2>
+    <ul class="rows">
+      <li><h3>Giải Ba Học sinh giỏi cấp Thành phố, môn Sinh học 12</h3><span class="side">Năm học 2019–2020</span><p>Sở Giáo dục và Đào tạo TP. Hồ Chí Minh cấp ngày 19/06/2020.</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Chứng chỉ chuyên môn</h2>
+    <ul class="rows">
+      <li><h3>Xây dựng và áp dụng hệ thống quản lý chất lượng theo TCVN ISO 9001:2015</h3><span class="side">24–26/02/2023</span><p>Trung tâm Kỹ thuật Tiêu chuẩn Đo lường Chất lượng 3 (QUATEST 3) cấp ngày 17/03/2023.</p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Minh chứng<small>Bấm vào ảnh để xem lớn</small></h2>
+    <div class="certs">
+      <figure><button class="zoom" type="button" data-full="img/bangdiem-2.jpg" aria-label="Phóng to: Bảng điểm đại học, trang 2"><img src="img/bangdiem-2.jpg" alt="Bảng điểm Trường ĐH Khoa học Tự nhiên, trang 2, ghi GPA và tình trạng tốt nghiệp" loading="lazy"></button><figcaption><b>Bảng điểm đại học, trang 2</b>GPA 3.49/4.0 · Tình trạng: đã tốt nghiệp</figcaption></figure>
+      <figure><button class="zoom" type="button" data-full="img/bangdiem-1.jpg" aria-label="Phóng to: Bảng điểm đại học, trang 1"><img src="img/bangdiem-1.jpg" alt="Bảng điểm Trường ĐH Khoa học Tự nhiên, trang 1" loading="lazy"></button><figcaption><b>Bảng điểm đại học, trang 1</b>Cử nhân Công nghệ Sinh học, khóa 2020</figcaption></figure>
+      <figure><button class="zoom" type="button" data-full="img/ielts.jpg" aria-label="Phóng to: IELTS Academic 6.0"><img src="img/ielts.jpg" alt="Phiếu điểm IELTS Academic, Overall 6.0" loading="lazy"></button><figcaption><b>IELTS Academic 6.0</b>Thi ngày 20/04/2025</figcaption></figure>
+      <figure><button class="zoom" type="button" data-full="img/ysc.jpg" aria-label="Phóng to: Hội nghị Khoa học trẻ lần II"><img src="img/ysc.jpg" alt="Giấy chứng nhận tham gia Hội nghị Khoa học trẻ lần II năm 2025" loading="lazy"></button><figcaption><b>Hội nghị Khoa học trẻ lần II</b>08/06/2025</figcaption></figure>
+      <figure><button class="zoom" type="button" data-full="img/hsg.jpg" aria-label="Phóng to: Giải Ba Học sinh giỏi cấp Thành phố"><img src="img/hsg.jpg" alt="Giấy chứng nhận Học sinh giỏi cấp Thành phố, môn Sinh học 12, giải Ba" loading="lazy"></button><figcaption><b>Giải Ba Học sinh giỏi cấp Thành phố</b>Sinh học 12 · 2019–2020</figcaption></figure>
+      <figure><button class="zoom" type="button" data-full="img/iso.jpg" aria-label="Phóng to: Khóa học TCVN ISO 9001:2015"><img src="img/iso.jpg" alt="Giấy chứng nhận khóa học Xây dựng và áp dụng hệ thống quản lý chất lượng theo TCVN ISO 9001:2015" loading="lazy"></button><figcaption><b>Khóa học TCVN ISO 9001:2015</b>QUATEST 3 · 2023</figcaption></figure>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Liên hệ</h2>
+    <div class="contact">
+      <div><span>Email</span><a href="mailto:v.p.phuoc@gmail.com">v.p.phuoc@gmail.com</a></div>
+      <div><span>Facebook</span><a href="https://www.facebook.com/phuoc.van.9889/">facebook.com/phuoc.van.9889</a></div>
+      <div><span>Nơi làm việc</span>TP. Hồ Chí Minh</div>
+    </div>
+    <p class="small">Văn Phú Phước · Cập nhật tháng 11/2026</p>
+  </div>
+</footer>
+
+<div id="lb" hidden role="dialog" aria-modal="true" aria-label="Ảnh minh chứng"><button type="button" id="lb-close">Đóng</button><img id="lb-img" alt=""></div>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'), lbImg=document.getElementById('lb-img'), last=null;
+  function closeLb(){lb.hidden=true;lbImg.removeAttribute('src');if(last)last.focus();}
+  document.querySelectorAll('.zoom').forEach(function(b){b.addEventListener('click',function(){
+    last=b;lbImg.src=b.getAttribute('data-full');lbImg.alt=b.querySelector('img').alt;lb.hidden=false;document.getElementById('lb-close').focus();});});
+  lb.addEventListener('click',closeLb);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)closeLb();});
+
+  /* Điều hướng 4 trang bằng hash */
+  var routes=['gioi-thieu','hoc-thuat','giang-day','chung-chi'];
+  var views=document.querySelectorAll('.view');
+  var links=document.querySelectorAll('[data-nav]');
+  function show(scroll){
+    var h=location.hash.replace('#','');
+    if(routes.indexOf(h)<0) h=routes[0];
+    views.forEach(function(v){v.hidden=v.getAttribute('data-view')!==h;});
+    links.forEach(function(a){
+      if(a.getAttribute('data-nav')===h) a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    });
+    if(scroll) window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',function(){show(true);});
+  show(false);
+})();
+</script>
+</body>
+</html>
